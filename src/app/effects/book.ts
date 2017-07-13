@@ -42,11 +42,10 @@ export class BookEffects {
     .map(toPayload)
     .switchMap(query => {
       if (query === '') {
-        return empty();
+        return this.actions$.ofType(book.CLEAR_BOOKS);
       }
 
       const nextSearch$ = this.actions$.ofType(book.SEARCH).skip(1);
-
       return this.googleBooks.searchBooks(query)
         .takeUntil(nextSearch$)
         .map(books => new book.SearchCompleteAction(books))
