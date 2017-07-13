@@ -16,8 +16,12 @@ export const initialState: State = {
   selectedBookId: null,
 };
 
+
 export function reducer(state = initialState, action: book.Actions | collection.Actions): State {
   switch (action.type) {
+    case book.CLEAR_BOOKS: {
+      return initialState;
+    }
     case book.SEARCH_COMPLETE:
     case collection.LOAD_SUCCESS: {
       const books = action.payload;
