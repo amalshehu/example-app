@@ -5,7 +5,7 @@ export const SEARCH =           '[Book] Search';
 export const SEARCH_COMPLETE =  '[Book] Search Complete';
 export const LOAD =             '[Book] Load';
 export const SELECT =           '[Book] Select';
-
+export const CLEAR_BOOKS = '[Book] Clear Books';
 
 /**
  * Every action is comprised of at least a type and an optional
@@ -37,7 +37,11 @@ export class SelectAction implements Action {
 
   constructor(public payload: string) { }
 }
+export class ClearBookAction implements Action {
+  readonly type = CLEAR_BOOKS;
 
+  constructor(public payload: Book[]) { }
+}
 /**
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
@@ -46,4 +50,5 @@ export type Actions
   = SearchAction
   | SearchCompleteAction
   | LoadAction
-  | SelectAction;
+  | SelectAction
+  | ClearBookAction;
