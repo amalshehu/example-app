@@ -34,7 +34,9 @@ export function reducer(state = initialState, action: book.Actions): State {
 
     case book.SEARCH_COMPLETE: {
       const books = action.payload;
-
+      if(state.query === '') {
+        return initialState;
+      }
       return {
         ids: books.map(book => book.id),
         loading: false,
