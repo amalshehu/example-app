@@ -115,7 +115,6 @@ export const getBooksState = (state: State) => state.books;
  export const getSelectedBookId = createSelector(getBooksState, fromBooks.getSelectedId);
  export const getSelectedBook = createSelector(getBooksState, fromBooks.getSelected);
 
-
 /**
  * Just like with the books selectors, we also have to compose the search
  * reducer's and collection reducer's selectors.
@@ -150,6 +149,8 @@ export const getBookCollection = createSelector(getBookEntities, getCollectionBo
 export const isSelectedBookInCollection = createSelector(getCollectionBookIds, getSelectedBookId, (ids, selected) => {
   return ids.indexOf(selected) > -1;
 });
+
+
 
 /**
  * Layout Reducers
