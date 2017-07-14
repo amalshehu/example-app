@@ -20,7 +20,8 @@ export const initialState: State = {
 export function reducer(state = initialState, action: book.Actions | collection.Actions): State {
   switch (action.type) {
     case book.CLEAR_BOOKS: {
-      return initialState;
+      return Object.assign({}, initialState);
+
     }
     case book.SEARCH_COMPLETE:
     case collection.LOAD_SUCCESS: {
@@ -85,6 +86,7 @@ export const getEntities = (state: State) => state.entities;
 export const getIds = (state: State) => state.ids;
 
 export const getSelectedId = (state: State) => state.selectedBookId;
+export const resetBooks = (state: State) => state;
 
 export const getSelected = createSelector(getEntities, getSelectedId, (entities, selectedId) => {
   return entities[selectedId];
