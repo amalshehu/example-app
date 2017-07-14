@@ -42,9 +42,11 @@ export class BookEffects {
     .map(toPayload)
     .switchMap(query => {
       if (query === '') {
-        const clearBooks$ = this.actions$.ofType(book.CLEAR_BOOKS);
-        console.log('Clear books', clearBooks$);
+        // const clearBooks$ = this.actions$.ofType(book.CLEAR_BOOKS);
+        // console.log('Clear books', clearBooks$);
+        // return of(new book.SearchCompleteAction([]));
         return empty() ;
+
       }
 
       const nextSearch$ = this.actions$.ofType(book.SEARCH).skip(1);
