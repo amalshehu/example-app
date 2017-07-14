@@ -30,5 +30,8 @@ export class FindBookPageComponent {
 
   search(query: string) {
     this.store.dispatch(new book.SearchAction(query));
+    if (query === '') {
+      this.store.dispatch(new book.ClearBookAction([]));
+    }
   }
 }
